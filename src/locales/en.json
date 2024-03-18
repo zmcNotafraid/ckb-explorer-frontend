@@ -299,8 +299,8 @@
       "inflation_rate_description": "Nominal inflation rate: the inflation introduced by the the primary issuance and the secondary issuance. \nNominal APC: the anti-dilution compensation rate of Nervos DAO.\nReal inflation rate: the compound inflation rate that nominal inflation rate minus the nominal APC, which is gradually to zero.",
       "node_count_in_total": "in total",
       "ckb_amount": "CKB Amount",
-      "contract_resource_distributed": "Contract Resource Distributed",
-      "contract_resource_distributed_description": "The x axis is contract's unique address count, the y axis is the contract's ckb amount, the symbol size is the contract's transaction count."
+      "contract_resource_distributed": "Contract Resource Distribution",
+      "contract_resource_distributed_description": "The x axis represents contract's unique address count, the y axis represents the contract's CKB amount, the symbol size represents the contract's transaction count."
     },
     "home": {
       "height": "Height",

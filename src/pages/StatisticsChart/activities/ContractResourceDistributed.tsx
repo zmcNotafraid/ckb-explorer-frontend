@@ -50,7 +50,7 @@ const useOption = (
       position: 'top',
       enterable: true,
       formatter: (params: any) => {
-        return `<a href=https://${config.BASE_URL}script/${params.value[3]}/${params.value[5]} target=_blank>${
+        return `<a href=https://${config.BASE_URL}/script/${params.value[3]}/${params.value[5]} target=_blank>${
           params.value[4] || params.value[3]
         }</a>`
       },
@@ -92,6 +92,7 @@ export const ContractResourceDistributedChart = ({ isThumbnail = false }: { isTh
   return (
     <SmartChartPage
       title={t('statistic.contract_resource_distributed')}
+      description={t('statistic.contract_resource_distributed_description')}
       isThumbnail={isThumbnail}
       fetchData={explorerService.api.fetchContractResourceDistributed}
       getEChartOption={useOption}
