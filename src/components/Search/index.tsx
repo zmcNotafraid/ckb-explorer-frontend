@@ -17,7 +17,7 @@ import classNames from 'classnames'
 import { SearchPanel, SearchButton } from './styled'
 import { explorerService, Response, SearchResultType } from '../../services/ExplorerService'
 import { addPrefixForHash, containSpecialChar } from '../../utils/string'
-import { HttpErrorCode, SearchFailType } from '../../constants/common'
+import { HttpErrorCode, SearchFailType, typeIdCodeHash } from '../../constants/common'
 import { useForkedState, useIsMobile } from '../../hooks'
 import { isChainTypeError } from '../../utils/chain'
 import { isAxiosError } from '../../utils/error'
@@ -208,7 +208,13 @@ const getURLByIdSearch = async (searchValue: string) => {
     const { type, attributes } = data
     switch (type) {
       case SearchResultType.TypeScript:
-        return `/script/${attributes.scriptHash}/type`
+        if (attributes.codeHash === typeIdCodeHash) {
+          return `/script/${attributes.scriptHash}/${attributes.hashType}`
+        }
+        return `/script/${attributes.codeHash}/${attributes.hashType}`
+
+      case SearchResultType.LockScript:
+        return `/script/${attributes.codeHash}/${attributes.hashType}`
 
       case SearchResultType.Block:
         return `/block/${attributes.blockHash}`

@@ -151,3 +151,5 @@ export enum HashType {
 
 export const MAINNET_URL = `https://${config.BASE_URL}`
 export const TESTNET_URL = `https://${ChainName.Testnet}.${config.BASE_URL}`
+
+export const typeIdCodeHash = '0x00000000000000000000000000000000000000000000000000545950455f4944'
