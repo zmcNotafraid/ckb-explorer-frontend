@@ -3,7 +3,6 @@ import { DATA_ZOOM_CONFIG } from '../../../utils/chart'
 import { SmartChartPage } from '../common'
 import { ChartItem, explorerService } from '../../../services/ExplorerService'
 import { ChartColorConfig } from '../../../constants/common'
-import config from '../../../config'
 
 const useOption = (
   statisticContractResourceDistributed: ChartItem.ContractResourceDistributed[],
@@ -50,7 +49,7 @@ const useOption = (
       position: 'top',
       enterable: true,
       formatter: (params: any) => {
-        return `<a href=https://${config.BASE_URL}/script/${params.value[3]}/${params.value[5]} target=_blank>${
+        return `<a href=${window.location.origin}/script/${params.value[3]}/${params.value[5]} target=_blank>${
           params.value[4] || params.value[3]
         }</a>`
       },
@@ -68,9 +67,14 @@ const useOption = (
       },
     ],
     dataset: {
-      source: statisticContractResourceDistributed
-        .filter(item => item.addressCount !== '0' || item.ckbAmount !== '0')
-        .map(data => [data.addressCount, data.ckbAmount, data.txCount, data.codeHash, data.name, data.hashType]),
+      source: statisticContractResourceDistributed.map(data => [
+        data.addressCount,
+        data.ckbAmount,
+        data.txCount,
+        data.codeHash,
+        data.name,
+        data.hashType,
+      ]),
     },
   }
 }
