@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { DATA_ZOOM_CONFIG } from '../../../utils/chart'
+import { DATA_ZOOM_CONFIG, handleAxis } from '../../../utils/chart'
 import { SmartChartPage } from '../common'
 import { ChartItem, explorerService } from '../../../services/ExplorerService'
 import { ChartColorConfig } from '../../../constants/common'
@@ -43,6 +43,9 @@ const useOption = (
         type: 'log',
         splitLine: { show: false },
         name: isMobile || isThumbnail ? '' : t('statistic.ckb_amount'),
+        axisLabel: {
+          formatter: (value: string) => handleAxis(value),
+        },
       },
     ],
     tooltip: {
