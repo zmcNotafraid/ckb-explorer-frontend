@@ -166,6 +166,7 @@
       "nervos_dao": "Nervos DAO",
       "faucet": "Faucet",
       "tokens": "Tokens",
+      "xUDT": "xUDT",
       "sUDT": "sUDT",
       "inscriptions": "Inscriptions",
       "docs": "Docs",
@@ -570,7 +571,28 @@
       "days": "days+",
       "24hrs_update": "24 Hours Changes(UTC+8:00)",
       "today_update": "Today Changes(UTC+8:00)",
-      "deposit_address_tooltip": "Number of addresses with non-zero balance of Nervos DAO"
+      "deposit_address_tooltip": "Number of addresses with non-zero balance of Nervos DAO",
+      "deposit_to_dao": "Deposit to Nervos DAO",
+      "deposit_to_dao_description": "Deposit to receive an equivalent amount of CKB at the same rate as the secondary issuance, keep your assets away from being diluted by the secondary issuance.",
+      "reward_calculator": "Compensation Calculator",
+      "nervos_dao_rfc": "Nervos DAO RFC",
+      "learn_more": "Learn More",
+      "dao_reward_calculator": "Nervos DAO Compensation Calculator",
+      "deposit_terms": "Nervos DAO (generally)requires 102 CKBytes for hosting cell itself, and this portion of CKBytes won't be compensated. Please refer to the <0>Nervos DAO RFC</0> for more information on Nervos DAO.",
+      "you_deposit": "Your Deposit",
+      "you_can_withdraw": "You may withdraw approximately",
+      "estimated_rewards": "Make a withdrawal request after {{days}} days:",
+      "deposit_notice": "30 days work as a circle, if you didn’t make withdrawal request, the compensation will be calculated as compound compensation.",
+      "estimated_APC": "Estimated APC",
+      "exclude_inactive_ckb": "Exclude inactive CKB",
+      "exclude_inactive_ckb_tip": "",
+      "rewards": "Compensation",
+      "estimated_rewards_in_years": "Estimated compensation in",
+      "year": "Year",
+      "years": "Years",
+      "day": "Days",
+      "done": "Done",
+      "view_apc_trending": "View APC Trending"
     },
     "error": {
       "maintain": "The tip block number {{tip}}, the current synced block lagging behind by {{lag}} blocks",
@@ -648,6 +670,21 @@
       "wrong_email": "Wrong Email? Click to report.",
       "view_original": "View Original",
       "repeat_inscription_symbol": "This inscription is a duplicate with an earlier release of the same symbol."
+    },
+    "xudt": {
+      "xudt": "xUDT",
+      "xudts": "xUDTs",
+      "name": "Name",
+      "symbol": "Symbol",
+      "total_amount": "Total Amount",
+      "issuer": "Issuer",
+      "type_script": "Type Script",
+      "holder_addresses": "Holder Addresses",
+      "decimal": "Decimal",
+      "transactions": "24hr Transactions",
+      "address_count": "Address Count",
+      "created_time": "Created Time",
+      "tokens_empty": "There are no xUDTs at this time."
     },
     "nft": {
       "nft_collection": "NFT Collection",
@@ -798,6 +835,20 @@
     "sort": {
       "time": "Sort by time",
       "capacity": "Sort by capacity"
+    },
+    "decoder": {
+      "view-data-as": "View data as",
+      "utf-8": "UTF-8",
+      "hex-number": "Hex Number",
+      "address": "Address",
+      "little-endian": "Little Endian",
+      "token-info": "Token Info",
+      "xudt-data": "XUDT Data",
+      "btc-time-lock": "BTC Time Lock",
+      "spore": "Spore",
+      "json": "JSON",
+      "select-x-from-y": "Selected {{x}} chars from {{y}}",
+      "fail-to-decode": "Fail to decode as {{decode}}"
     }
   }
 }

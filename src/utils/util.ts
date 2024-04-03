@@ -21,6 +21,7 @@ import {
 import { isMainnet } from './chain'
 import { Script } from '../models/Script'
 import { Cell } from '../models/Cell'
+import { parseBtcTimeLockArgs } from './rgbpp'
 
 export const copyElementValue = (component: any) => {
   if (!component) return
@@ -148,6 +149,21 @@ export const getBtcUtxo = (script: Script) => {
     v.match(/\w{2}/g)?.reverse().join(''),
   )
   return { txid, index }
+}
+
+export const getBtcTimeLockInfo = (script: Script) => {
+  const scriptSet = IS_MAINNET ? MainnetContractHashTags : TestnetContractHashTags
+
+  // FIXME: should not use tag as index
+  const INDEX_TAG = 'BTC Time Lock'
+  const btcTimeLockScript = scriptSet.find(s => s.tag === INDEX_TAG)
+  if (!btcTimeLockScript) return
+  if (btcTimeLockScript.hashType !== script.hashType || !btcTimeLockScript.codeHashes.includes(script.codeHash)) return
+  try {
+    return parseBtcTimeLockArgs(script.args)
+  } catch (e) {
+    return null
+  }
 }
 
 export const udtSubmitEmail = () =>
@@ -404,6 +420,17 @@ export const hexToBase64 = (hexstring: string) => {
     .join('')
   if (!str) return ''
   return btoa(str)
+}
+
+export const ckbToShannon = (amount: string = '0') => {
+  if (Number.isNaN(+amount)) {
+    return `${amount} ckb`
+  }
+  const [integer = '0', decimal = ''] = amount.split('.')
+  const decimalLength = 10 ** decimal.length
+  const num = integer + decimal
+
+  return (BigInt(num) * BigInt(1e8 / decimalLength)).toString()
 }
 
 export default {

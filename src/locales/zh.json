@@ -166,6 +166,7 @@
       "nervos_dao": "Nervos DAO",
       "faucet": "水龙头",
       "tokens": "代币",
+      "xUDT": "xUDT",
       "sUDT": "sUDT",
       "inscriptions": "铭文",
       "docs": "文档",
@@ -571,7 +572,28 @@
       "days": "天+",
       "24hrs_update": "24 小时变动(UTC+8:00)",
       "today_update": "今日变动(UTC+8:00)",
-      "deposit_address_tooltip": "Nervos DAO 锁定余额不为零的地址"
+      "deposit_address_tooltip": "Nervos DAO 锁定余额不为零的地址",
+      "deposit_to_dao": "锁定到 Nervos DAO",
+      "deposit_to_dao_description": "锁定以获得与二次发行利率相同的等额 CKB，避免您的资产被二次发行稀释。",
+      "reward_calculator": "补贴计算器",
+      "nervos_dao_rfc": "Nervos DAO RFC",
+      "learn_more": "了解更多",
+      "dao_reward_calculator": "Nervos DAO 补贴计算器",
+      "deposit_terms": "Nervos DAO (通常)需要 102 CKBytes 作为锁定记录的存储，这部分 CKBytes 是无法产生锁定补贴的。<br />请查看 <0>Nervos DAO RFC</0> 以了解 Nervos DAO 更多信息。",
+      "you_deposit": "锁定",
+      "you_can_withdraw": "可领取约",
+      "estimated_rewards": "{{days}} 天后提出提取申请:",
+      "deposit_notice": "30 天为一个周期，如果您没有提出提取要求，补贴将按复利计算",
+      "estimated_APC": "预计年化锁定补贴率",
+      "exclude_inactive_ckb": "不包含非活动的CKB",
+      "exclude_inactive_ckb_tip": "",
+      "rewards": "补贴",
+      "estimated_rewards_in_years": "预计补贴",
+      "year": "年",
+      "years": "年",
+      "day": "天",
+      "done": "完成",
+      "view_apc_trending": "查看 APC 走势"
     },
     "error": {
       "maintain": "最新区块为 {{tip}}, 当前同步高度落后 {{lag}} 区块",
@@ -649,6 +671,21 @@
       "wrong_email": "不是这个邮箱? 提交报告",
       "view_original": "查看原铭文",
       "repeat_inscription_symbol": "此铭文与早期发布的铭文同名"
+    },
+    "xudt": {
+      "xudt": "xUDT",
+      "xudts": "xUDTs",
+      "name": "名称",
+      "symbol": "符号",
+      "total_amount": "总量",
+      "issuer": "发行人",
+      "type_script": "Type Script",
+      "holder_addresses": "用户数",
+      "decimal": "小数位",
+      "transactions": "24小时交易数",
+      "address_count": "用户数",
+      "created_time": "创建时间",
+      "tokens_empty": "目前没有 xUDT。"
     },
     "nft": {
       "nft_collection": "NFT 藏品",
@@ -799,6 +836,20 @@
     "sort": {
       "time": "按时间排序",
       "capacity": "按 Capacity 排序"
+    },
+    "decoder": {
+      "view-data-as": "选择解码格式",
+      "utf-8": "UTF-8",
+      "hex-number": "Hex Number",
+      "address": "Address",
+      "little-endian": "Little Endian",
+      "token-info": "Token Info",
+      "xudt-data": "XUDT Data",
+      "btc-time-lock": "BTC Time Lock",
+      "spore": "Spore",
+      "json": "JSON",
+      "select-x-from-y": "从 {{y}} 字符起选择了 {{x}} 个字符",
+      "fail-to-decode": "未能以 {{decode}} 格式解码"
     }
   }
 }
