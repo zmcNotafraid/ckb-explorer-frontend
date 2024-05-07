@@ -31,7 +31,6 @@ const useOption = (
     color: chartColor.colors,
     grid: isThumbnail ? gridThumbnail : grid,
     dataZoom: isThumbnail ? [] : DATA_ZOOM_CONFIG,
-
     tooltip: !isThumbnail
       ? {
           trigger: 'axis',
@@ -47,11 +46,11 @@ const useOption = (
             const script = tag || `<div style="white-space: pre">Code Hash: ${codeHash}\nHash Type: ${hashType}</div>`
             return `<table>
                       <tr>
-                        <td>Script: </td>
+                        <td>Script:</td>
                         <td>${script}</td>
                       </tr>
                       <tr>
-                        <td>Addresses: </td>
+                        <td>${t('statistic.address')}: </td>
                         <td>${Number(addrCount).toLocaleString('en')}</td>
                       </tr>
                       <tr>
@@ -59,11 +58,11 @@ const useOption = (
                         <td>${Number(ckbAmount).toLocaleString('en')}</td>
                       </tr>
                       <tr>
-                        <td>Transactions: </td>
+                        <td>${t('statistic.transaction_num')}: </td>
                         <td>${Number(txCount).toLocaleString('en')}</td>
                       </tr>
                       <tr>
-                        <td>H24Transactions: </td>
+                        <td>${t('statistic.h24_transaction_count')}: </td>
                         <td>${Number(h24TxCount).toLocaleString('en')}</td>
                       </tr>
                     </table>`
