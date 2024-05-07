@@ -35,12 +35,15 @@ const useOption = (
     tooltip: !isThumbnail
       ? {
           trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+          },
           formatter: dataList => {
             if (!Array.isArray(dataList)) return ''
             const params = dataList[0]
             if (!params) return ''
             if (!Array.isArray(params.value)) return ''
-            const [addrCount, ckbAmount, txCount, codeHash, tag, hashType] = params.value
+            const [addrCount, ckbAmount, txCount, codeHash, tag, hashType, h24TxCount] = params.value
             const script = tag || `<div style="white-space: pre">Code Hash: ${codeHash}\nHash Type: ${hashType}</div>`
             return `<table>
                       <tr>
@@ -58,6 +61,10 @@ const useOption = (
                       <tr>
                         <td>Transactions: </td>
                         <td>${Number(txCount).toLocaleString('en')}</td>
+                      </tr>
+                      <tr>
+                        <td>H24Transactions: </td>
+                        <td>${Number(h24TxCount).toLocaleString('en')}</td>
                       </tr>
                     </table>`
           },
@@ -82,7 +89,19 @@ const useOption = (
         },
       },
     ],
-    // TODO: add visual map when txs/24h is ready
+    visualMap: [
+      {
+        dimension: 6,
+        orient: 'vertical',
+        right: 10,
+        top: 'center',
+        text: ['HIGH', 'LOW'],
+        calculable: true,
+        inRange: {
+          color: ['#FFB21E', '#FA504F'],
+        },
+      },
+    ],
     series: [
       {
         type: 'scatter',
@@ -103,6 +122,7 @@ const useOption = (
         data.codeHash,
         data.name,
         data.hashType,
+        data.h24TxCount,
       ]),
     },
   }
@@ -117,6 +137,7 @@ const toCSV = (statisticContractResourceDistributed: ChartItem.ContractResourceD
         data.txCount,
         data.ckbAmount,
         data.addressCount,
+        data.h24TxCount,
       ])
     : []
 
