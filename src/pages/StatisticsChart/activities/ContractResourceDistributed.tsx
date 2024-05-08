@@ -27,6 +27,10 @@ const useOption = (
     bottom: '5%',
     containLabel: true,
   }
+  const h24TxCountSortedList: number[] = statisticContractResourceDistributed
+    .map(data => Number(data.h24TxCount))
+    .sort((a, b) => b - a)
+
   return {
     color: chartColor.colors,
     grid: isThumbnail ? gridThumbnail : grid,
@@ -90,6 +94,8 @@ const useOption = (
     ],
     visualMap: [
       {
+        min: h24TxCountSortedList[-1] === undefined ? 0 : h24TxCountSortedList[-1],
+        max: h24TxCountSortedList[0] === undefined ? 200 : h24TxCountSortedList[0],
         dimension: 6,
         orient: 'vertical',
         right: 10,
