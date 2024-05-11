@@ -37,18 +37,15 @@ const useOption = (
     dataZoom: isThumbnail ? [] : DATA_ZOOM_CONFIG,
     tooltip: !isThumbnail
       ? {
-          trigger: 'axis',
+          trigger: 'item',
           axisPointer: {
             type: 'cross',
           },
-          formatter: dataList => {
-            if (!Array.isArray(dataList)) return ''
-            const params = dataList[0]
-            if (!params) return ''
-            if (!Array.isArray(params.value)) return ''
-            const [addrCount, ckbAmount, txCount, codeHash, tag, hashType, h24TxCount] = params.value
-            const script = tag || `<div style="white-space: pre">Code Hash: ${codeHash}\nHash Type: ${hashType}</div>`
-            return `<table>
+          formatter: params => {
+            if (params && 'data' in params) {
+              const [addrCount, ckbAmount, txCount, codeHash, tag, hashType, h24TxCount] = params.data
+              const script = tag || `<div style="white-space: pre">Code Hash: ${codeHash}\nHash Type: ${hashType}</div>`
+              return `<table>
                       <tr>
                         <td>Script:</td>
                         <td>${script}</td>
@@ -70,6 +67,8 @@ const useOption = (
                         <td>${Number(h24TxCount).toLocaleString('en')}</td>
                       </tr>
                     </table>`
+            }
+            return ''
           },
         }
       : undefined,
