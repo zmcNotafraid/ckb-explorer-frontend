@@ -93,7 +93,10 @@ const useOption = (
     ],
     visualMap: [
       {
-        min: h24TxCountSortedList[-1] === undefined ? 0 : h24TxCountSortedList[-1],
+        min:
+          h24TxCountSortedList[h24TxCountSortedList.length - 1] === undefined
+            ? 0
+            : h24TxCountSortedList[h24TxCountSortedList.length - 1],
         max: h24TxCountSortedList[0] === undefined ? 200 : h24TxCountSortedList[0],
         dimension: 6,
         orient: 'vertical',
