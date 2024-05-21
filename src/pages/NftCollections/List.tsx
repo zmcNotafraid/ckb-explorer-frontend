@@ -12,6 +12,7 @@ import { useIsMobile, useSearchParams } from '../../hooks'
 import styles from './styles.module.scss'
 import type { NFTCollection } from '../../services/ExplorerService/fetcher'
 import { useNFTCollectionsSortParam } from './util'
+import { parseSimpleDate } from '../../utils/date'
 
 const primaryColor = getPrimaryColor()
 function useFilterList(): Record<'title' | 'value', string>[] {
@@ -113,6 +114,23 @@ const HolderMinterSort = () => {
     </div>
   )
 }
+interface SimpleSortProps {
+  sortField: 'transactions' | 'timestamp'
+  fieldI18n: string
+}
+const SimpleSortHeader: React.FC<SimpleSortProps> = ({ sortField, fieldI18n }) => {
+  const sortParam = useNFTCollectionsSortParam()
+  const { handleSortClick } = sortParam
+  return (
+    <span>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <span onClick={() => handleSortClick(sortField)} role="button" tabIndex={0}>
+        {fieldI18n}
+      </span>
+      <SortButton field={sortField} sortParam={sortParam} />
+    </span>
+  )
+}
 
 const TypeInfo: React.FC<{ nft: NFTCollection }> = ({ nft: item }) => {
   const { t } = useTranslation()
@@ -149,7 +167,6 @@ const TypeInfo: React.FC<{ nft: NFTCollection }> = ({ nft: item }) => {
 
 export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[] }> = ({ list, isLoading }) => {
   const { t } = useTranslation()
-  const sortParam = useNFTCollectionsSortParam()
 
   return (
     <table data-role="desktop-list">
@@ -160,17 +177,15 @@ export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[]
             <TypeFilter />
           </th>
           <th className={styles.transactionsHeader}>
-            <span>
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-              <span onClick={() => sortParam.handleSortClick('transactions')} role="button" tabIndex={0}>
-                {t('nft.transactions')}
-              </span>
-              <SortButton field="transactions" sortParam={sortParam} />
-            </span>
+            <SimpleSortHeader sortField="transactions" fieldI18n={t('nft.transactions')} />
           </th>
           <th>
             <HolderMinterSort />
           </th>
+          <th>
+            <SimpleSortHeader sortField="timestamp" fieldI18n={t('nft.timestamp')} />
+          </th>
+
           <th>{t('nft.minter_address')}</th>
         </tr>
       </thead>
@@ -230,6 +245,7 @@ export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[]
                 <td>{`${(item.holders_count ?? 0).toLocaleString('en')}/${(item.items_count ?? 0).toLocaleString(
                   'en',
                 )}`}</td>
+                <td>{item.timestamp === null ? '' : parseSimpleDate(item.timestamp)}</td>
                 <td>
                   <div>
                     {item.creator ? (
