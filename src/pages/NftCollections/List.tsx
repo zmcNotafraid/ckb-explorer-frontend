@@ -183,9 +183,8 @@ export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[]
             <HolderMinterSort />
           </th>
           <th>
-            <SimpleSortHeader sortField="timestamp" fieldI18n={t('nft.timestamp')} />
+            <SimpleSortHeader sortField="timestamp" fieldI18n={t('nft.created_time')} />
           </th>
-
           <th>{t('nft.minter_address')}</th>
         </tr>
       </thead>
@@ -281,20 +280,14 @@ export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[]
 
 export const ListOnMobile: React.FC<{ isLoading: boolean; list: NFTCollection[] }> = ({ list, isLoading }) => {
   const { t } = useTranslation()
-  const sortParam = useNFTCollectionsSortParam()
 
   return (
     <div data-role="mobile-list">
       <div className={styles.listHeader}>
         <TypeFilter />
-        <span>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-          <span onClick={() => sortParam.handleSortClick('transactions')} role="button" tabIndex={0}>
-            {t('nft.transactions')}
-          </span>
-          <SortButton field="transactions" sortParam={sortParam} />
-        </span>
+        <SimpleSortHeader sortField="transactions" fieldI18n={t('nft.transactions')} />
         <HolderMinterSort />
+        <SimpleSortHeader sortField="timestamp" fieldI18n={t('nft.created_time')} />
       </div>
       <div>
         {list.length ? (
@@ -358,6 +351,14 @@ export const ListOnMobile: React.FC<{ isLoading: boolean; list: NFTCollection[] 
                       'en',
                     )}`}
                   </dd>
+                </dl>
+                <dl>
+                  <dt>{t('nft.transactions')}</dt>
+                  <dd>{item.h24_ckb_transactions_count}</dd>
+                </dl>
+                <dl>
+                  <dt>{t('nft.created_time')}</dt>
+                  <dd>{item.timestamp === null ? '' : parseSimpleDate(item.timestamp)}</dd>
                 </dl>
                 {item.creator ? (
                   <dl>
