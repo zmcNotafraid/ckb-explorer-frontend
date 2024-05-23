@@ -268,7 +268,7 @@ export const ListOnDesktop: React.FC<{ isLoading: boolean; list: NFTCollection[]
           })
         ) : (
           <tr>
-            <td colSpan={5} className={styles.noRecord}>
+            <td colSpan={6} className={styles.noRecord}>
               {isLoading ? 'loading' : t(`nft.no_record`)}
             </td>
           </tr>
