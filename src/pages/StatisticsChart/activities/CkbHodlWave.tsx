@@ -103,7 +103,7 @@ const useOption = (
     containLabel: true,
   }
   const parseTooltip = useTooltip()
-  const colors = [...chartColor.moreColors].slice(0, 8).reverse()
+  const colors = [...chartColor.moreColors].slice(0, 9)
   return {
     color: colors,
     tooltip: !isThumbnail
@@ -214,9 +214,6 @@ const useOption = (
         areaStyle: {
           color: colors[0],
         },
-        lineStyle: {
-          width: 4,
-        },
       },
       {
         name: t('statistic.day_to_one_week'),
@@ -302,7 +299,6 @@ const useOption = (
         symbol: isThumbnail ? 'none' : 'circle',
         symbolSize: 3,
         lineStyle: {
-          width: 4,
           color: colors[8],
         },
       },
